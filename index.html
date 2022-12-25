@@ -124,8 +124,12 @@
         .container{
             margin: 2rem 1rem;
         }
-        .lower{
+        .lower p:nth-child(1){
             font-size: 13px;
+        }
+        .lower p:nth-child(2){
+            font-size: 13px;
+            padding: 1.5rem;
         }
     }
   </style>
@@ -134,7 +138,7 @@
       <div>
         <input type="text" placeholder="Search city" />
         <!-- font awesome icon -->
-        <i class="fa fa-search" aria-hidden="true"></i>
+        <i data-search class="fa fa-search" aria-hidden="true"></i>
       </div>
       <div>
         <div data-date>Today, May 7th, 2022</div>
@@ -188,6 +192,8 @@
       visibility: document.querySelector("[data-visibility]"),
       humidity: document.querySelector("[data-humidity]"),
       airPressure: document.querySelector("[data-pressure]"),
+      search: document.querySelector("[data-search]"),
+      
     };
     let city = "Patna";
 
@@ -204,6 +210,14 @@
         DomObject.input.value=""
         weather();
       }
+    };
+    DomObject.search.onclick = (e) => {
+      
+        city = DomObject.input.value;
+        // console.log(city)
+        DomObject.input.value=""
+        weather();
+      
     };
 
     const API = "cd32d94e3a252208791e5ea21baec7b9";
